@@ -20,15 +20,15 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/{id}")
+    @RequestMapping("/{userId}")
     @ResponseBody
-    public User findById(@PathVariable("id") Long id) {
-        return userService.getOneUser(id);
+    public User getUser(@PathVariable("userId") Long userId) {
+        return userService.getOneUser(userId);
     }
 
     @RequestMapping("/")
     @ResponseBody
-    public List<User> findAll() {
+    public List<User> getUsers() {
         List<User> users = new ArrayList<>();
         userService.getAllUsers().forEach(users::add);
         return users;

@@ -28,7 +28,7 @@ public class TestController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/")
+    @RequestMapping("/") //Yes we know it should be POST not GET
     @ResponseBody
     private void createDatabase() {
         Set<User> users = new HashSet<>();
