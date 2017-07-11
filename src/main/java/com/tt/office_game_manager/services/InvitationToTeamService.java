@@ -13,15 +13,17 @@ import java.util.List;
  */
 @Service
 public class InvitationToTeamService {
+    private final InvitationToTeamRepository invitationToTeamRepository;
 
     @Autowired
-    InvitationToTeamRepository invitationToTeamRepository;
+    InvitationToTeamService(InvitationToTeamRepository invitationToTeamRepository){
+        super();
+        this.invitationToTeamRepository = invitationToTeamRepository;
+    }
 
     public List<InvitationToTeam> getAllInvitationToTeam(){
         List<InvitationToTeam> invitationToTeams = new ArrayList<>();
         invitationToTeamRepository.findAll().forEach(invitationToTeams::add);
         return invitationToTeams;
     }
-
-
 }

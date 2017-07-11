@@ -12,5 +12,4 @@ import java.util.List;
  */
 @Repository
 public interface InvitationToTeamRepository extends CrudRepository<InvitationToTeam, Long> {
-    List<InvitationToTeam> findAllByUser(User user);
 }

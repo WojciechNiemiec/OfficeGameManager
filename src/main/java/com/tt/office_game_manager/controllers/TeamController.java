@@ -2,6 +2,7 @@ package com.tt.office_game_manager.controllers;
 
 import com.tt.office_game_manager.entities.Team;
 import com.tt.office_game_manager.repositories.TeamRepository;
+import com.tt.office_game_manager.services.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,19 +18,23 @@ import java.util.Collection;
 @Controller
 @RequestMapping("/teams")
 public class TeamController {
+    private final TeamService teamRepository;
 
     @Autowired
-    TeamRepository teamRepository;
+    TeamController(TeamService teamService) {
+        super();
+        this.teamRepository = teamService;
+    }
 
     @RequestMapping("/{teamId}")
     @ResponseBody
     public Team getTeam(@PathVariable("teamId") Long teamId) {
-        return teamRepository.findByTeamId(teamId);
+        return teamRepository.getTeam(teamId);
     }
 
     @RequestMapping("/")
     @ResponseBody
     public Collection<Team> getTeams() {
-        return teamRepository.findAll();
+        return teamRepository.getAllTeams();
     }
 }

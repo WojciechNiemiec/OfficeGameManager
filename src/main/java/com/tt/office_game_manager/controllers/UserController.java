@@ -17,8 +17,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+    private final UserService userService;
+
     @Autowired
-    UserService userService;
+    UserController(UserService userService) {
+        super();
+        this.userService = userService;
+    }
 
     @RequestMapping("/{id}")
     @ResponseBody
