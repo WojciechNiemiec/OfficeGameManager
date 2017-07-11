@@ -26,6 +26,6 @@ public class User implements Serializable {
     private String password;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "User_Team", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "teamId"))
+    @JoinTable(name = "UserTeam", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "teamId"))
     private Set<Team> teams;
 }

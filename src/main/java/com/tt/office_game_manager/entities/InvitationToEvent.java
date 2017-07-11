@@ -8,6 +8,7 @@ import lombok.ToString;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * Created by niemiecw on 07.07.2017.
@@ -15,9 +16,9 @@ import javax.persistence.ManyToOne;
 
 @Getter
 @Setter
-@Entity
 @EqualsAndHashCode
 @ToString
+@Entity
 public class InvitationToEvent extends Invitation{
 
     @ManyToOne

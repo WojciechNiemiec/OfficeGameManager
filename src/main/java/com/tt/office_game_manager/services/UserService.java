@@ -1,7 +1,7 @@
 package com.tt.office_game_manager.services;
 
 import com.tt.office_game_manager.entities.User;
-import com.tt.office_game_manager.entities.UserRepository;
+import com.tt.office_game_manager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +30,7 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public void updateUser(User user) {
+    public void updateUser(Long id, User user) {
         userRepository.save(user);
     }
 
