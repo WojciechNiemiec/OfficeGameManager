@@ -4,8 +4,10 @@ import com.tt.office_game_manager.entities.Team;
 import com.tt.office_game_manager.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -34,5 +36,10 @@ public class TeamService {
 
     public void addTeam(Team team) {
         teamRepository.save(team);
+    }
+
+    @Transactional
+    public void addTeams(Collection<Team> teams) {
+        teams.stream().forEach(teamRepository::save);
     }
 }

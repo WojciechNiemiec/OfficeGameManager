@@ -16,5 +16,4 @@ public interface TeamRepository extends CrudRepository<Team, Long> {
 
     Collection<Team> findAll();
     Team findByTeamId(Long teamId);
-    void addAll(Collection<Team> teams);
 }

@@ -4,8 +4,10 @@ import com.tt.office_game_manager.entities.User;
 import com.tt.office_game_manager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -20,6 +22,11 @@ public class UserService {
         List<User> users = new ArrayList<>();
         userRepository.findAll().forEach(users::add);
         return users;
+    }
+
+    @Transactional
+    public void addUsers(Collection<User> users) {
+        users.stream().forEach(userRepository::save);
     }
 
     public User getOneUser(Long id) {
