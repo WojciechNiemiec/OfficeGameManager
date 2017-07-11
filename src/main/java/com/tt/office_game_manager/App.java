@@ -3,6 +3,8 @@ package com.tt.office_game_manager;
 import com.tt.office_game_manager.entities.*;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
@@ -12,10 +14,17 @@ import java.util.Set;
 /**
  * Hello world!
  */
+
+@SpringBootApplication
 public class App {
     public static void main(String[] args) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
+        //TODO: Repository i serwisy do kazdej encji
+
+        SpringApplication.run(App.class, args);
+
+
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        Transaction transaction = session.beginTransaction();
 
 //        Set<User> users = new HashSet<>();
 //        Set<Team> teams = new HashSet<>();
@@ -50,16 +59,15 @@ public class App {
 //
 //        System.out.println(typedQuery.getResultList());
 
-        InvitationToTeam invitation = new InvitationToTeam();
-        invitation.setTeam((Team) session.createQuery("select t from Team t").list().get(0));
+//        InvitationToTeam invitation = new InvitationToTeam();
+//        invitation.setTeam((Team) session.createQuery("select t from Team t").list().get(0));
+//
+//        session.save(invitation);
+//
+//        transaction.commit();
+//
+//        session.close();
+//        HibernateUtil.getSessionFactory().close();
 
-        session.save(invitation);
-
-        transaction.commit();
-
-        session.close();
-        HibernateUtil.getSessionFactory().close();
-
-        //TODO: Repository i serwisy do kazdej encji
     }
 }
