@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
+
 /**
  * Created by niemiecw on 11.07.2017.
  */
@@ -12,5 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TeamRepository extends CrudRepository<Team, Long> {
 
+    Collection<Team> findAll();
     Team findByTeamId(Long teamId);
+    void addAll(Collection<Team> teams);
 }

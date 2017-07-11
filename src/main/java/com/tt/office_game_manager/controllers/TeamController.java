@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Collection;
+
 /**
  * Created by niemiecw on 11.07.2017.
  */
@@ -23,5 +25,11 @@ public class TeamController {
     @ResponseBody
     public Team getTeam(@PathVariable("teamId") Long teamId) {
         return teamRepository.findByTeamId(teamId);
+    }
+
+    @RequestMapping("/")
+    @ResponseBody
+    public Collection<Team> getTeams() {
+        return teamRepository.findAll();
     }
 }
