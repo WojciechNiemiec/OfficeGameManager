@@ -19,6 +19,10 @@ public class InvitationToTeamService {
         this.invitationToTeamRepository = invitationToTeamRepository;
     }
 
+    public void addInvitationToTeam(InvitationToTeamEntity invitationToTeamEntity){
+        invitationToTeamRepository.save(invitationToTeamEntity);
+    }
+
     public List<InvitationToTeamEntity> getAllInvitationToTeam(){
         List<InvitationToTeamEntity> invitationToTeamEntities = new ArrayList<>();
         invitationToTeamRepository.findAll().forEach(invitationToTeamEntities::add);

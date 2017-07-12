@@ -21,6 +21,10 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
 
+    public void addEvent(EventEntity eventEntity){
+        eventRepository.save(eventEntity);
+    }
+
     public EventEntity getEvent(Long id) {
         return eventRepository.findOne(id);
     }

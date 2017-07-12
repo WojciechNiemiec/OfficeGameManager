@@ -18,6 +18,11 @@ public class InvitationToEventService {
         super();
         this.invitationToEventRepository = invitationToEventRepository;
     }
+
+    public void addInvitationToEvent(InvitationToEventEntity invitationToEventEntity){
+        invitationToEventRepository.save(invitationToEventEntity);
+    }
+
     public List<InvitationToEventEntity> getAllInvitationToEvent(){
         List<InvitationToEventEntity> invitationToEventEntities = new ArrayList<>();
         invitationToEventEntities.forEach(invitationToEventEntities::add);

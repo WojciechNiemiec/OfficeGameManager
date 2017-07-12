@@ -15,14 +15,15 @@ import java.sql.Date;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class InvitationEntity implements Serializable{
-
     @Id
     @GeneratedValue(strategy=GenerationType.TABLE)
     @Column(name = "id")
     private Long id;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private InvitationStatusType status;
+
     @Column(name = "date")
     private Date date;
 }
