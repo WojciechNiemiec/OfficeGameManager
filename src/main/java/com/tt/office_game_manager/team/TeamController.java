@@ -23,10 +23,10 @@ public class TeamController {
         this.teamRepository = teamService;
     }
 
-    @RequestMapping("/{teamId}")
+    @RequestMapping("/{id}")
     @ResponseBody
-    public TeamEntity getTeam(@PathVariable("teamId") Long teamId) {
-        return teamRepository.getTeam(teamId);
+    public TeamEntity getTeam(@PathVariable("id") Long id) {
+        return teamRepository.getTeam(id);
     }
 
     @RequestMapping("/")

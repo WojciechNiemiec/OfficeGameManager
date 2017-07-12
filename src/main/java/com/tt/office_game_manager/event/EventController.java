@@ -12,7 +12,7 @@ import java.util.Collection;
  */
 
 @Controller
-@RequestMapping("/evemts")
+@RequestMapping("/events")
 public class EventController {
     private final EventService eventService;
 
@@ -22,9 +22,9 @@ public class EventController {
         this.eventService = eventService;
     }
 
-    @RequestMapping("/{eventId}")
-    public EventEntity getEvent(@PathVariable("eventId") Long eventId) {
-        return eventService.getEvent(eventId);
+    @RequestMapping("/{id}")
+    public EventEntity getEvent(@PathVariable("id") Long id) {
+        return eventService.getEvent(id);
     }
 
     @RequestMapping("/")

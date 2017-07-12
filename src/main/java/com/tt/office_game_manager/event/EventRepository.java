@@ -11,6 +11,4 @@ import java.util.Collection;
 
 @Repository
 public interface EventRepository extends CrudRepository<EventEntity, Long> {
-    EventEntity findByEventId(Long eventId);
-    Collection<EventEntity> findAll();
 }

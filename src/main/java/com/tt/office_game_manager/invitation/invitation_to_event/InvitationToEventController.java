@@ -24,8 +24,8 @@ public class InvitationToEventController {
 
     @RequestMapping("/")
     @ResponseBody
-    public List<InvitationEntityToEventEntity> getInvitationsToEvent() {
-        List<InvitationEntityToEventEntity> invitationToEventEntities = new ArrayList<>();
+    public List<InvitationToEventEntity> getInvitationsToEvent() {
+        List<InvitationToEventEntity> invitationToEventEntities = new ArrayList<>();
         invitationToEventService.getAllInvitationToEvent().forEach(invitationToEventEntities::add);
         return invitationToEventEntities;
     }

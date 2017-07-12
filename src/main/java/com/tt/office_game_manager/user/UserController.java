@@ -23,10 +23,10 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/{userId}")
+    @RequestMapping("/{id}")
     @ResponseBody
-    public UserEntity getUser(@PathVariable("userId") Long userId) {
-        return userService.getOneUser(userId);
+    public UserEntity getUser(@PathVariable("id") Long id) {
+        return userService.getOneUser(id);
     }
 
     @RequestMapping("/")

@@ -1,5 +1,9 @@
 package com.tt.office_game_manager.test_classes;
 
+import com.tt.office_game_manager.event.EventEntity;
+import com.tt.office_game_manager.event.EventService;
+import com.tt.office_game_manager.invitation.invitation_to_event.InvitationToEventService;
+import com.tt.office_game_manager.invitation.invitation_to_team.InvitationToTeamService;
 import com.tt.office_game_manager.team.TeamEntity;
 import com.tt.office_game_manager.user.UserEntity;
 import com.tt.office_game_manager.team.TeamService;
@@ -21,12 +25,21 @@ import java.util.Set;
 public class TestController {
 
     @Autowired
-    TeamService teamService;
+    private TeamService teamService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
-    @RequestMapping("/") //Yes we know it should be POST not GET
+    @Autowired
+    private InvitationToEventService invitationToEventService;
+
+    @Autowired
+    private InvitationToTeamService invitationToTeamService;
+
+    @Autowired
+    private EventService eventService;
+
+    @RequestMapping //Yes we know it should be POST not GET
     @ResponseBody
     private void createDatabase() {
         Set<UserEntity> userEntities = new HashSet<>();

@@ -22,7 +22,7 @@ public class EventService {
     }
 
     public EventEntity getEvent(Long id) {
-        return eventRepository.findByEventId(id);
+        return eventRepository.findOne(id);
     }
 
     public List<EventEntity> getAllEvents() {

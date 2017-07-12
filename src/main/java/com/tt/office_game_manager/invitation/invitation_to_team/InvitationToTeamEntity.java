@@ -10,11 +10,12 @@ import javax.persistence.*;
 /**
  * Created by niemiecw on 07.07.2017.
  */
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "invitation_to_team")
-public class InvitationEntityToTeamEntity extends InvitationEntity {
+public class InvitationToTeamEntity extends InvitationEntity {
 
     @ManyToOne
     @JoinColumn(name = "team_id")

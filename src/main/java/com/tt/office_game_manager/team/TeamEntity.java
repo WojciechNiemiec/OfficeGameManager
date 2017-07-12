@@ -19,8 +19,10 @@ public class TeamEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "name")
     private String name;
+
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private UserEntity owner;

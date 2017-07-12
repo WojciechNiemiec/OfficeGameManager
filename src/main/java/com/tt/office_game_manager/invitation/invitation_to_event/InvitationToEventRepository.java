@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
  * Created by jereczekt on 11.07.2017.
  */
 @Repository
-public interface InvitationToEventRepository extends CrudRepository<InvitationEntityToEventEntity, Long> {
+public interface InvitationToEventRepository extends CrudRepository<InvitationToEventEntity, Long> {
 }

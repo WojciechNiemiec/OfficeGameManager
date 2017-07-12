@@ -13,11 +13,12 @@ import javax.persistence.Table;
 /**
  * Created by niemiecw on 07.07.2017.
  */
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "invitation_to_event")
-public class InvitationEntityToEventEntity extends InvitationEntity {
+public class InvitationToEventEntity extends InvitationEntity {
 
     @ManyToOne
     @JoinColumn(name = "team_id")

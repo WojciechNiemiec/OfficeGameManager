@@ -28,8 +28,8 @@ public class TeamService {
         return teamEntities;
     }
 
-    public TeamEntity getTeam(Long teamId) {
-        return teamRepository.findOne(teamId);
+    public TeamEntity getTeam(Long id) {
+        return teamRepository.findOne(id);
     }
 
     public void addTeam(TeamEntity teamEntity) {

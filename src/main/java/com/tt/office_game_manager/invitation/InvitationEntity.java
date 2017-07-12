@@ -9,7 +9,8 @@ import java.sql.Date;
 /**
  * Created by niemiecw on 07.07.2017.
  */
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)

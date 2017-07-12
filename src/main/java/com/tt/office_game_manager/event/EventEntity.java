@@ -11,6 +11,8 @@ import java.sql.Date;
 /**
  * Created by niemiecw on 07.07.2017.
  */
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name = "event")
@@ -29,11 +31,11 @@ public class EventEntity implements Serializable {
     private UserEntity owner;
 
     @Column(name = "begin_date")
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     private Date beginDate;
 
     @Column(name = "end_date")
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     private Date endDate;
 
     @Column(name = "is_ranked")

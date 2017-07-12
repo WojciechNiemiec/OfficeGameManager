@@ -19,8 +19,8 @@ public class InvitationToTeamService {
         this.invitationToTeamRepository = invitationToTeamRepository;
     }
 
-    public List<InvitationEntityToTeamEntity> getAllInvitationToTeam(){
-        List<InvitationEntityToTeamEntity> invitationToTeamEntities = new ArrayList<>();
+    public List<InvitationToTeamEntity> getAllInvitationToTeam(){
+        List<InvitationToTeamEntity> invitationToTeamEntities = new ArrayList<>();
         invitationToTeamRepository.findAll().forEach(invitationToTeamEntities::add);
         return invitationToTeamEntities;
     }

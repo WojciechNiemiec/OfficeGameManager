@@ -11,7 +11,4 @@ import java.util.Collection;
 
 @Repository
 public interface TeamRepository extends CrudRepository<TeamEntity, Long> {
-
-    Collection<TeamEntity> findAll();
-    TeamEntity findByTeamId(Long teamId);
 }

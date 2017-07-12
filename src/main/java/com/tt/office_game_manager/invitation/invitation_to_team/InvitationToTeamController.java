@@ -22,8 +22,8 @@ public class InvitationToTeamController {
     }
 
     @RequestMapping("/")
-    public List<InvitationEntityToTeamEntity> getInvitationsToTeam(){
-        List<InvitationEntityToTeamEntity> invitationToTeamEntities = new ArrayList<>();
+    public List<InvitationToTeamEntity> getInvitationsToTeam(){
+        List<InvitationToTeamEntity> invitationToTeamEntities = new ArrayList<>();
         invitationToTeamService.getAllInvitationToTeam().forEach(invitationToTeamEntities::add);
         return invitationToTeamEntities;
     }
