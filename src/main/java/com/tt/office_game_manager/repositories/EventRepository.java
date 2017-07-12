@@ -1,6 +1,6 @@
 package com.tt.office_game_manager.repositories;
 
-import com.tt.office_game_manager.entities.Team;
+import com.tt.office_game_manager.entities.Event;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,8 +11,7 @@ import java.util.Collection;
  */
 
 @Repository
-public interface TeamRepository extends CrudRepository<Team, Long> {
-
-    Collection<Team> findAll();
-    Team findByTeamId(Long teamId);
+public interface EventRepository extends CrudRepository<Event, Long> {
+    Event findByEventId(Long eventId);
+    Collection<Event> findAll();
 }
