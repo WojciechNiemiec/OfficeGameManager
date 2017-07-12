@@ -1,6 +1,10 @@
 package com.tt.office_game_manager;
 
-import com.tt.office_game_manager.entities.*;
+import com.tt.office_game_manager.event.EventEntity;
+import com.tt.office_game_manager.invitation.invitation_to_event.InvitationEntityToEventEntity;
+import com.tt.office_game_manager.invitation.invitation_to_team.InvitationEntityToTeamEntity;
+import com.tt.office_game_manager.team.TeamEntity;
+import com.tt.office_game_manager.user.UserEntity;
 import lombok.Getter;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -14,12 +18,11 @@ public class HibernateUtil {
 
     static {
         sessionFactory = new Configuration().configure()
-                .addAnnotatedClass(Event.class)
-                .addAnnotatedClass(InvitationToEvent.class)
-                .addAnnotatedClass(InvitationToTeam.class)
-                .addAnnotatedClass(Team.class)
-                .addAnnotatedClass(TeamEvent.class)
-                .addAnnotatedClass(User.class)
+                .addAnnotatedClass(EventEntity.class)
+                .addAnnotatedClass(InvitationEntityToEventEntity.class)
+                .addAnnotatedClass(InvitationEntityToTeamEntity.class)
+                .addAnnotatedClass(TeamEntity.class)
+                .addAnnotatedClass(UserEntity.class)
                 .buildSessionFactory();
     }
 }
