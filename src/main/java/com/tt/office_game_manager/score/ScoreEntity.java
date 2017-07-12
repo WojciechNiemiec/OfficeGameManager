@@ -16,6 +16,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 @Entity
+@IdClass(ScoreId.class)
 @Table(name = "score")
 public class ScoreEntity implements Serializable{
     @Id

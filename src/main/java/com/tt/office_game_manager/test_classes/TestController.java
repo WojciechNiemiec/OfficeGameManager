@@ -3,11 +3,15 @@ package com.tt.office_game_manager.test_classes;
 import com.tt.office_game_manager.discipline.DisciplineType;
 import com.tt.office_game_manager.event.EventEntity;
 import com.tt.office_game_manager.event.EventService;
+import com.tt.office_game_manager.game.GameEntity;
+import com.tt.office_game_manager.game.GameService;
 import com.tt.office_game_manager.invitation.InvitationStatusType;
 import com.tt.office_game_manager.invitation.invitation_to_event.InvitationToEventEntity;
 import com.tt.office_game_manager.invitation.invitation_to_event.InvitationToEventService;
 import com.tt.office_game_manager.invitation.invitation_to_team.InvitationToTeamEntity;
 import com.tt.office_game_manager.invitation.invitation_to_team.InvitationToTeamService;
+import com.tt.office_game_manager.score.ScoreEntity;
+import com.tt.office_game_manager.score.ScoreService;
 import com.tt.office_game_manager.team.TeamEntity;
 import com.tt.office_game_manager.user.UserEntity;
 import com.tt.office_game_manager.team.TeamService;
@@ -40,6 +44,10 @@ public class TestController {
     private InvitationToTeamService invitationToTeamService;
     @Autowired
     private EventService eventService;
+    @Autowired
+    private GameService gameService;
+    @Autowired
+    private ScoreService scoreService;
 
     @RequestMapping //Yes we know it should be POST not GET
     @ResponseBody
@@ -79,5 +87,17 @@ public class TestController {
         invitationToTeamEntities.add(new InvitationToTeamEntity(null, InvitationStatusType.REJECTED, null, teamEntities.get(1), userEntities.get(2)));
         invitationToTeamEntities.add(new InvitationToTeamEntity(null, InvitationStatusType.ACCEPTED, null, teamEntities.get(0), userEntities.get(1)));
         invitationToTeamEntities.stream().forEach(invitationToTeamService::addInvitationToTeam);
+
+        List<GameEntity> gameEntities = new ArrayList<>();
+        gameEntities.add(new GameEntity(null,eventEntities.get(1),2));
+        gameEntities.add(new GameEntity(null,eventEntities.get(1),2));
+        gameEntities.add(new GameEntity(null,eventEntities.get(2),2));
+        gameEntities.stream().forEach(gameService::addGame);
+
+        List<ScoreEntity> scoreEntities=new ArrayList<>();
+        scoreEntities.add(new ScoreEntity(gameEntities.get(0),teamEntities.get(1),2));
+        scoreEntities.add(new ScoreEntity(gameEntities.get(1),teamEntities.get(0),53));
+        scoreEntities.add(new ScoreEntity(gameEntities.get(1),teamEntities.get(1),3));
+        scoreEntities.stream().forEach(scoreService::addScore);
     }
 }
