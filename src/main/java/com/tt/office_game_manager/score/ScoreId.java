@@ -1,5 +1,6 @@
 package com.tt.office_game_manager.score;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tt.office_game_manager.game.GameEntity;
 import com.tt.office_game_manager.team.TeamEntity;
 import lombok.AllArgsConstructor;
@@ -21,6 +22,7 @@ public class ScoreId implements Serializable{
     @SuppressWarnings("JpaAttributeTypeInspection")
     @ManyToOne
     @JoinColumn(name = "game_id")
+    @JsonIgnore
     private GameEntity gameEntity;
 
     @SuppressWarnings("JpaAttributeTypeInspection")

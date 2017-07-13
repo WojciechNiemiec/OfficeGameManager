@@ -24,10 +24,21 @@ public class ScoreService {
         scoreRepository.save(scoreEntity);
     }
 
+    public ScoreEntity getScore(ScoreId id) {
+        return scoreRepository.findOne(id);
+    }
+
     public List<ScoreEntity> getAllScores(){
         List<ScoreEntity> scoreEntities=new ArrayList<>();
         scoreRepository.findAll().forEach(scoreEntities::add);
         return scoreEntities;
     }
 
+    public void deleteScore(ScoreId id) {
+        scoreRepository.delete(id);
+    }
+
+    public void deleteScore(ScoreEntity scoreEntity) {
+        scoreRepository.delete(scoreEntity);
+    }
 }
