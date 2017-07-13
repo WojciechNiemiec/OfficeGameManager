@@ -2,12 +2,7 @@ package com.tt.office_game_manager.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by jereczekt on 11.07.2017.
@@ -23,17 +18,40 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping("/{id}")
+    @PostMapping("/create")
     @ResponseBody
-    public UserEntity getUser(@PathVariable("id") Long id) {
-        return userService.getOneUser(id);
+    public void addUser(@RequestBody UserEntity userEntity) {
+        userService.addUser(userEntity);
     }
 
-    @RequestMapping("/")
+    @GetMapping("/{id}")
     @ResponseBody
-    public List<UserEntity> getUsers() {
-        List<UserEntity> userEntities = new ArrayList<>();
-        userService.getAllUsers().forEach(userEntities::add);
-        return userEntities;
+    public UserEntity getUser(@PathVariable("id") Long id) {
+        return userService.getUser(id);
     }
+
+    @GetMapping("/")
+    @ResponseBody
+    public Iterable<UserEntity> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @PutMapping("/update")
+    @ResponseBody
+    public void updateUser(@RequestBody UserEntity userEntity) {
+        userService.updateUser(userEntity);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @ResponseBody
+    public void deleteUser(@PathVariable("id") Long id) {
+        userService.deleteUser(id);
+    }
+
+    @DeleteMapping("/delete")
+    @ResponseBody
+    public void deleteUser(@RequestBody UserEntity userEntity) {
+        userService.deleteUser(userEntity);
+    }
+
 }

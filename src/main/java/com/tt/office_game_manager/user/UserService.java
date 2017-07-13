@@ -16,13 +16,11 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public List<UserEntity> getAllUsers() {
-        List<UserEntity> userEntities = new ArrayList<>();
-        userRepository.findAll().forEach(userEntities::add);
-        return userEntities;
+    public Iterable<UserEntity> getAllUsers() {
+        return userRepository.findAll();
     }
 
-    public UserEntity getOneUser(Long id) {
+    public UserEntity getUser(Long id) {
         return userRepository.findOne(id);
     }
 
@@ -30,8 +28,12 @@ public class UserService {
         userRepository.save(userEntity);
     }
 
-    public void updateUser(Long id, UserEntity userEntity) {
+    public void updateUser(UserEntity userEntity) {
         userRepository.save(userEntity);
+    }
+
+    public void deleteUser(UserEntity userEntity) {
+        userRepository.delete(userEntity);
     }
 
     public void deleteUser(Long id) {
