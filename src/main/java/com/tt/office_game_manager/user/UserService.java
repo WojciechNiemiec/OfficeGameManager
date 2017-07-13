@@ -13,31 +13,36 @@ import java.util.List;
  */
 @Service
 public class UserService {
+    private final UserRepository userRepository;
+
     @Autowired
-    UserRepository userRepository;
-
-    public Iterable<UserEntity> getAllUsers() {
-        return userRepository.findAll();
-    }
-
-    public UserEntity getUser(Long id) {
-        return userRepository.findOne(id);
+    public UserService(UserRepository userRepository) {
+        super();
+        this.userRepository = userRepository;
     }
 
     public void addUser(UserEntity userEntity) {
         userRepository.save(userEntity);
     }
 
+    public UserEntity getUser(Long id) {
+        return userRepository.findOne(id);
+    }
+
+    public Iterable<UserEntity> getAllUsers() {
+        return userRepository.findAll();
+    }
+
     public void updateUser(UserEntity userEntity) {
         userRepository.save(userEntity);
     }
 
-    public void deleteUser(UserEntity userEntity) {
-        userRepository.delete(userEntity);
-    }
-
     public void deleteUser(Long id) {
         userRepository.delete(id);
+    }
+
+    public void deleteUser(UserEntity userEntity) {
+        userRepository.delete(userEntity);
     }
 
 }
