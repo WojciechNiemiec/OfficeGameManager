@@ -22,14 +22,12 @@ public class TeamService {
         this.teamRepository = teamRepository;
     }
 
-    public List<TeamEntity> getAllTeams() {
-        List<TeamEntity> teamEntities = new ArrayList<>();
-        teamRepository.findAll().forEach(team -> teamEntities.add(team));
-        return teamEntities;
-    }
-
     public TeamEntity getTeam(Long id) {
         return teamRepository.findOne(id);
+    }
+
+    public Iterable<TeamEntity> getAllTeams() {
+        return teamRepository.findAll();
     }
 
     public void addTeam(TeamEntity teamEntity) {
@@ -39,5 +37,13 @@ public class TeamService {
     @Transactional
     public void addTeams(Collection<TeamEntity> teamEntities) {
         teamEntities.stream().forEach(teamRepository::save);
+    }
+
+    public void deleteTeam(Long id) {
+        teamRepository.delete(id);
+    }
+
+    public void deleteTeam(TeamEntity teamEntity) {
+        teamRepository.delete(teamEntity);
     }
 }
