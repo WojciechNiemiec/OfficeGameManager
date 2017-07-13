@@ -11,6 +11,7 @@ import com.tt.office_game_manager.invitation.invitation_to_event.InvitationToEve
 import com.tt.office_game_manager.invitation.invitation_to_team.InvitationToTeamEntity;
 import com.tt.office_game_manager.invitation.invitation_to_team.InvitationToTeamService;
 import com.tt.office_game_manager.score.ScoreEntity;
+import com.tt.office_game_manager.score.ScoreId;
 import com.tt.office_game_manager.score.ScoreService;
 import com.tt.office_game_manager.team.TeamEntity;
 import com.tt.office_game_manager.user.UserEntity;
@@ -95,9 +96,9 @@ public class TestController {
         gameEntities.stream().forEach(gameService::addGame);
 
         List<ScoreEntity> scoreEntities=new ArrayList<>();
-        scoreEntities.add(new ScoreEntity(gameEntities.get(0),teamEntities.get(1),2));
-        scoreEntities.add(new ScoreEntity(gameEntities.get(1),teamEntities.get(0),53));
-        scoreEntities.add(new ScoreEntity(gameEntities.get(1),teamEntities.get(1),3));
+        scoreEntities.add(new ScoreEntity(new ScoreId(gameEntities.get(0),teamEntities.get(1)),2));
+        scoreEntities.add(new ScoreEntity(new ScoreId(gameEntities.get(1),teamEntities.get(0)),53));
+        scoreEntities.add(new ScoreEntity(new ScoreId(gameEntities.get(1),teamEntities.get(1)),3));
         scoreEntities.stream().forEach(scoreService::addScore);
     }
 }

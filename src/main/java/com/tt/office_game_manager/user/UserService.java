@@ -22,11 +22,6 @@ public class UserService {
         return userEntities;
     }
 
-    @Transactional
-    public void addUsers(Collection<UserEntity> userEntities) {
-        userEntities.stream().forEach(userRepository::save);
-    }
-
     public UserEntity getOneUser(Long id) {
         return userRepository.findOne(id);
     }

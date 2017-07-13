@@ -16,18 +16,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 @Entity
-@IdClass(ScoreId.class)
+//@IdClass(ScoreId.class)
 @Table(name = "score")
 public class ScoreEntity implements Serializable{
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "game_id")
-    private GameEntity gameEntity;
-
-    @Id
-    @ManyToOne
-    @JoinColumn (name = "team_id")
-    private TeamEntity teamEntity;
+    @EmbeddedId
+    private ScoreId scoreId;
 
     @Column (name = "score")
     private Integer score;
