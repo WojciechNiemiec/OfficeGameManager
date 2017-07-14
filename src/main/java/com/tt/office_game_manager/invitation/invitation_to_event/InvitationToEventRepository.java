@@ -1,5 +1,6 @@
 package com.tt.office_game_manager.invitation.invitation_to_event;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -7,5 +8,5 @@ import org.springframework.stereotype.Repository;
  * Created by jereczekt on 11.07.2017.
  */
 @Repository
-public interface InvitationToEventRepository extends CrudRepository<InvitationToEventEntity, Long> {
+public interface InvitationToEventRepository extends JpaRepository<InvitationToEventEntity, Long> {
 }

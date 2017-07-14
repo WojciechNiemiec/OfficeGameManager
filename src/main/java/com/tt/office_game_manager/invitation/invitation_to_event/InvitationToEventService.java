@@ -14,18 +14,32 @@ public class InvitationToEventService {
     private final InvitationToEventRepository invitationToEventRepository;
 
     @Autowired
-    InvitationToEventService(InvitationToEventRepository invitationToEventRepository){
+    InvitationToEventService(InvitationToEventRepository invitationToEventRepository) {
         super();
         this.invitationToEventRepository = invitationToEventRepository;
     }
 
-    public void addInvitationToEvent(InvitationToEventEntity invitationToEventEntity){
+    public void addInvitationToEvent(InvitationToEventEntity invitationToEventEntity) {
         invitationToEventRepository.save(invitationToEventEntity);
     }
 
-    public List<InvitationToEventEntity> getAllInvitationToEvent(){
-        List<InvitationToEventEntity> invitationToEventEntities = new ArrayList<>();
-        invitationToEventEntities.forEach(invitationToEventEntities::add);
-        return invitationToEventEntities;
+    public InvitationToEventEntity getInvitationToEvent(Long id) {
+        return invitationToEventRepository.findOne(id);
+    }
+
+    public Iterable<InvitationToEventEntity> getAllInvitationToEvent() {
+        return invitationToEventRepository.findAll();
+    }
+
+    public void updateInvitationToEvent(InvitationToEventEntity invitationToEventEntity) {
+        invitationToEventRepository.save(invitationToEventEntity);
+    }
+
+    public void deleteInvitationToEvent(Long id) {
+        invitationToEventRepository.delete(id);
+    }
+
+    public void deleteInvitationToEvent(InvitationToEventEntity invitationToEventEntity) {
+        invitationToEventRepository.delete(invitationToEventEntity);
     }
 }
