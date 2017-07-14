@@ -1,10 +1,14 @@
 package com.tt.office_game_manager.team;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tt.office_game_manager.invitation.invitation_to_event.InvitationToEventEntity;
+import com.tt.office_game_manager.invitation.invitation_to_team.InvitationToTeamEntity;
+import com.tt.office_game_manager.score.ScoreEntity;
 import com.tt.office_game_manager.user.UserEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.persistence.criteria.Join;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -33,4 +37,16 @@ public class TeamEntity implements Serializable {
     @JoinTable(name = "user_team", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"))
     private Set<UserEntity> userEntities;
+
+    @OneToMany
+    @JoinColumn
+    private Set<InvitationToEventEntity> invitationsToEvents;
+
+    @OneToMany
+    @JoinColumn
+    private Set<ScoreEntity> scores;
+
+    @OneToMany
+    @JoinColumn
+    private Set<InvitationToTeamEntity> ownedInvitationsToTeam;
 }

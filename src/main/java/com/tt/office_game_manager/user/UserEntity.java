@@ -1,6 +1,8 @@
 package com.tt.office_game_manager.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.tt.office_game_manager.event.EventEntity;
+import com.tt.office_game_manager.invitation.invitation_to_team.InvitationToTeamEntity;
 import com.tt.office_game_manager.team.TeamEntity;
 import lombok.*;
 
@@ -34,10 +36,20 @@ public class UserEntity implements Serializable {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_team", joinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
-    private Set<TeamEntity> teamEntities;
+    private Set<TeamEntity> teams;
 
     @JsonIgnore
     @OneToMany
-    @JoinColumn(name = "owned_teams_id")
+    @JoinColumn
     private Set<TeamEntity> ownedTeams;
+
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn
+    private Set<EventEntity> ownedEvents;
+
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn
+    private Set<InvitationToTeamEntity> invitationsToTeams;
 }
