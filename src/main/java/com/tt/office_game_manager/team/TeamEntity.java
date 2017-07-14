@@ -34,6 +34,7 @@ public class TeamEntity implements Serializable {
     private UserEntity owner;
 
     @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinTable(name = "user_team", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "team_id", referencedColumnName = "id"))
     private Set<UserEntity> userEntities;
