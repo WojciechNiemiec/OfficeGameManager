@@ -22,13 +22,14 @@ public class InvitationToTeamEntity extends InvitationEntity {
     public InvitationToTeamEntity(Long id, InvitationStatusType invitationStatusType, Date date, TeamEntity teamEntity, UserEntity userEntity) {
         super(id, invitationStatusType, date);
         this.teamEntity = teamEntity;
-        this.userEntity = userEntity;
+        this.invitedUser = userEntity;
     }
 
     @ManyToOne
     @JoinColumn(name = "team_id")
     private TeamEntity teamEntity;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserEntity userEntity;
+    private UserEntity invitedUser;
 }

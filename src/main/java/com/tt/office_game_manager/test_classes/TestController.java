@@ -56,26 +56,41 @@ public class TestController {
         List<UserEntity> userEntities = new ArrayList<>();
         List<TeamEntity> teamEntities = new ArrayList<>();
 
-        userEntities.add(new UserEntity(null, "wojtek", "xyz", new HashSet<>()));
-        userEntities.add(new UserEntity(null, "tadek", "xyz", new HashSet<>()));
-        userEntities.add(new UserEntity(null, "rafal", "xyz", new HashSet<>()));
-        userEntities.add(new UserEntity(null, "piotr", "xyz", new HashSet<>()));
-        userEntities.add(new UserEntity(null, "michal", "xyz", new HashSet<>()));
-        userEntities.add(new UserEntity(null, "brajan", "xyz", new HashSet<>()));
-        userEntities.add(new UserEntity(null, "dzesika", "xyz", new HashSet<>()));
+        userEntities.add(new UserEntity(null, "wojtek", "xyz", new HashSet<>(),new HashSet<>(), new HashSet<>(), new HashSet<>()));
+        userEntities.add(new UserEntity(null, "tadek", "xyz", new HashSet<>(),new HashSet<>(), new HashSet<>(), new HashSet<>()));
+        userEntities.add(new UserEntity(null, "rafal", "xyz", new HashSet<>(),new HashSet<>(), new HashSet<>(), new HashSet<>()));
+        userEntities.add(new UserEntity(null, "piotr", "xyz", new HashSet<>(),new HashSet<>(), new HashSet<>(), new HashSet<>()));
+        userEntities.add(new UserEntity(null, "michal", "xyz", new HashSet<>(),new HashSet<>(), new HashSet<>(), new HashSet<>()));
+        userEntities.add(new UserEntity(null, "brajan", "xyz", new HashSet<>(),new HashSet<>(), new HashSet<>(), new HashSet<>()));
+        userEntities.add(new UserEntity(null, "dzesika", "xyz", new HashSet<>(),new HashSet<>(), new HashSet<>(), new HashSet<>()));
         userEntities.stream().forEach(userService::addUser);
 
-        teamEntities.add(new TeamEntity(null, "Minionki", null));
-        teamEntities.add(new TeamEntity(null, "Rakiety", null));
+        teamEntities.add(new TeamEntity(null, "Minionki", userEntities.get(2),new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
+        teamEntities.add(new TeamEntity(null, "Rakiety", userEntities.get(2),new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
+        teamEntities.add(new TeamEntity(null, "Wojsy", userEntities.get(3),new HashSet<>(), new HashSet<>(), new HashSet<>(), new HashSet<>()));
         teamEntities.stream().forEach(teamService::addTeam);
 
-        userEntities.stream().filter(user -> "wojtektadekmarcin".contains(user.getLogin())).forEach(user -> user.getTeamEntities().add(teamEntities.stream().filter(team -> team.getName().equals("Minionki")).findAny().get()));
-        userEntities.stream().filter(user -> "marcinpiotrmateuszjan".contains(user.getLogin())).forEach(user -> user.getTeamEntities().add(teamEntities.stream().filter(team -> team.getName().equals("Rakiety")).findAny().get()));
+//        userEntities.stream().filter(user -> "wojtektadekrafalpiotr".contains(user.getLogin())).forEach(user -> user.getTeamEntities().add(teamEntities.stream().filter(team -> team.getName().equals("Minionki")).findAny().get()));
+//        userEntities.stream().filter(user -> "tadekpiotrmichalbrajandzesika".contains(user.getLogin())).forEach(user -> user.getTeamEntities().add(teamEntities.stream().filter(team -> team.getName().equals("Rakiety")).findAny().get()));
+//        userEntities.stream().filter(user -> "tadekdzesika".contains(user.getLogin())).forEach(user -> user.getTeamEntities().add(teamEntities.stream().filter(team -> team.getName().equals("Wojsy")).findAny().get()));
+
+        teamEntities.get(0).getUserEntities().add(userEntities.get(0));
+//        teamEntities.get(0).getUserEntities().add(userEntities.get(1));
+//        teamEntities.get(0).getUserEntities().add(userEntities.get(2));
+//        teamEntities.get(0).getUserEntities().add(userEntities.get(3));
+//
+        teamEntities.get(1).getUserEntities().add(userEntities.get(3));
+//        teamEntities.get(1).getUserEntities().add(userEntities.get(4));
+//        teamEntities.get(1).getUserEntities().add(userEntities.get(5));
+//        teamEntities.get(1).getUserEntities().add(userEntities.get(6));
+//
+//        teamEntities.get(2).getUserEntities().add(userEntities.get(2));
+//        teamEntities.get(2).getUserEntities().add(userEntities.get(4));
 
         List<EventEntity> eventEntities = new ArrayList<>();
-        eventEntities.add(new EventEntity(null, DisciplineType.DARTS, userEntities.get(0), null, null, true, false));
-        eventEntities.add(new EventEntity(null, DisciplineType.TABLE_SOCCER, userEntities.get(2), null, null, false, false));
-        eventEntities.add(new EventEntity(null, DisciplineType.TABLE_TENNIS, userEntities.get(3), null, null, true, true));
+        eventEntities.add(new EventEntity(null, DisciplineType.DARTS, userEntities.get(0), null, null, true, false, new HashSet<GameEntity>() ));
+        eventEntities.add(new EventEntity(null, DisciplineType.TABLE_SOCCER, userEntities.get(2), null, null, false, false, new HashSet<GameEntity>()));
+        eventEntities.add(new EventEntity(null, DisciplineType.TABLE_TENNIS, userEntities.get(3), null, null, true, true, new HashSet<GameEntity>()));
         eventEntities.stream().forEach(eventService::addEvent);
 
 
@@ -90,9 +105,9 @@ public class TestController {
         invitationToTeamEntities.stream().forEach(invitationToTeamService::addInvitationToTeam);
 
         List<GameEntity> gameEntities = new ArrayList<>();
-        gameEntities.add(new GameEntity(null,eventEntities.get(1),2));
-        gameEntities.add(new GameEntity(null,eventEntities.get(1),2));
-        gameEntities.add(new GameEntity(null,eventEntities.get(2),2));
+        gameEntities.add(new GameEntity(null,eventEntities.get(1),2, new HashSet<>()));
+        gameEntities.add(new GameEntity(null,eventEntities.get(1),2, new HashSet<>()));
+        gameEntities.add(new GameEntity(null,eventEntities.get(2),2, new HashSet<>()));
         gameEntities.stream().forEach(gameService::addGame);
 
         List<ScoreEntity> scoreEntities=new ArrayList<>();

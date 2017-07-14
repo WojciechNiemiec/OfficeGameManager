@@ -1,12 +1,14 @@
 package com.tt.office_game_manager.event;
 
 import com.tt.office_game_manager.discipline.DisciplineType;
+import com.tt.office_game_manager.game.GameEntity;
 import com.tt.office_game_manager.user.UserEntity;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Set;
 
 /**
  * Created by niemiecw on 07.07.2017.
@@ -43,4 +45,8 @@ public class EventEntity implements Serializable {
 
     @Column(name = "is_tournament")
     private Boolean isTournament;
+
+    @OneToMany
+    @JoinColumn
+    private Set<GameEntity> games;
 }
