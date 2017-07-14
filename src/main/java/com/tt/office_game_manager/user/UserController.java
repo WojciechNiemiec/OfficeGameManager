@@ -53,5 +53,4 @@ public class UserController {
     public void deleteUser(@RequestBody UserEntity userEntity) {
         userService.deleteUser(userEntity);
     }
-
 }
