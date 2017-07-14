@@ -24,13 +24,14 @@ public class InvitationToEventEntity extends InvitationEntity {
 
     public InvitationToEventEntity(Long id, InvitationStatusType invitationStatusType, Date date, TeamEntity teamEntity, EventEntity eventEntity) {
         super(id, invitationStatusType, date);
-        this.teamEntity = teamEntity;
+        this.invitedTeam = teamEntity;
         this.eventEntity = eventEntity;
     }
 
     @ManyToOne
-    @JoinColumn(name = "team_id")
-    private TeamEntity teamEntity;
+    @JoinColumn(name = "team_id") //invited
+    private TeamEntity invitedTeam;
+
     @ManyToOne
     @JoinColumn(name = "event_id")
     private EventEntity eventEntity;
