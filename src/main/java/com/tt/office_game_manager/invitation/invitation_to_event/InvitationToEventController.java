@@ -11,7 +11,7 @@ import java.util.List;
  * Created by jereczekt on 11.07.2017.
  */
 @Controller
-@RequestMapping("/invitation-to-event")
+@RequestMapping("/invitations-to-event")
 public class InvitationToEventController {
     private final InvitationToEventService invitationToEventService;
 

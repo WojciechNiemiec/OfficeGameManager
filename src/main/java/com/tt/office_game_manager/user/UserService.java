@@ -44,5 +44,4 @@ public class UserService {
     public void deleteUser(UserEntity userEntity) {
         userRepository.delete(userEntity);
     }
-
 }

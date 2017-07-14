@@ -9,10 +9,8 @@ import java.util.List;
 /**
  * Created by niemiecw on 11.07.2017.
  */
-
 @Service
 public class EventService {
-
     private final EventRepository eventRepository;
 
     @Autowired
@@ -21,7 +19,7 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
 
-    public void addEvent(EventEntity eventEntity){
+    public void addEvent(EventEntity eventEntity) {
         eventRepository.save(eventEntity);
     }
 
@@ -30,8 +28,18 @@ public class EventService {
     }
 
     public List<EventEntity> getAllEvents() {
-        List<EventEntity> eventEntities = new ArrayList<>();
-        eventRepository.findAll().forEach(eventEntities::add);
-        return eventEntities;
+        return eventRepository.findAll();
+    }
+
+    public void updateEvent(EventEntity eventEntity) {
+        eventRepository.save(eventEntity);
+    }
+
+    public void deleteEvent(Long id) {
+        eventRepository.delete(id);
+    }
+
+    public void deleteEvent(EventEntity eventEntity) {
+        eventRepository.delete(eventEntity);
     }
 }
