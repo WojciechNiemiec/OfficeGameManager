@@ -2,8 +2,7 @@ package com.tt.office_game_manager.invitation.invitation_to_event;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +21,39 @@ public class InvitationToEventController {
         this.invitationToEventService = invitationToEventService;
     }
 
-    @RequestMapping("/")
+    @PostMapping("/create")
     @ResponseBody
-    public List<InvitationToEventEntity> getInvitationsToEvent() {
-        List<InvitationToEventEntity> invitationToEventEntities = new ArrayList<>();
-        invitationToEventService.getAllInvitationToEvent().forEach(invitationToEventEntities::add);
-        return invitationToEventEntities;
+    public void addInvitationToEvent(@RequestBody InvitationToEventEntity invitationToEventEntity) {
+        invitationToEventService.addInvitationToEvent(invitationToEventEntity);
     }
 
+    @GetMapping("/{id}")
+    @ResponseBody
+    public InvitationToEventEntity getInvitationToEvent(@PathVariable("id") Long id) {
+        return invitationToEventService.getInvitationToEvent(id);
+    }
 
+    @GetMapping("/")
+    @ResponseBody
+    public Iterable<InvitationToEventEntity> getAllInvitationsToEvent() {
+        return invitationToEventService.getAllInvitationToEvent();
+    }
+
+    @PutMapping("/update")
+    @ResponseBody
+    public void updateInvitationToEvent(@RequestBody InvitationToEventEntity invitationToEventEntity) {
+        invitationToEventService.updateInvitationToEvent(invitationToEventEntity);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @ResponseBody
+    public void deleteInvitationToEvent(@PathVariable("id") Long id) {
+        invitationToEventService.deleteInvitationToEvent(id);
+    }
+
+    @DeleteMapping("/delete")
+    @ResponseBody
+    public void deleteInvitationToEvent(@RequestBody InvitationToEventEntity invitationToEventEntity) {
+        invitationToEventService.deleteInvitationToEvent(invitationToEventEntity);
+    }
 }

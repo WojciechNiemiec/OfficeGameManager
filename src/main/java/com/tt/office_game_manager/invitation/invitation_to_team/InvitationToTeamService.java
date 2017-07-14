@@ -14,18 +14,32 @@ public class InvitationToTeamService {
     private final InvitationToTeamRepository invitationToTeamRepository;
 
     @Autowired
-    InvitationToTeamService(InvitationToTeamRepository invitationToTeamRepository){
+    InvitationToTeamService(InvitationToTeamRepository invitationToTeamRepository) {
         super();
         this.invitationToTeamRepository = invitationToTeamRepository;
     }
 
-    public void addInvitationToTeam(InvitationToTeamEntity invitationToTeamEntity){
+    public void addInvitationToTeam(InvitationToTeamEntity invitationToTeamEntity) {
         invitationToTeamRepository.save(invitationToTeamEntity);
     }
 
-    public List<InvitationToTeamEntity> getAllInvitationToTeam(){
-        List<InvitationToTeamEntity> invitationToTeamEntities = new ArrayList<>();
-        invitationToTeamRepository.findAll().forEach(invitationToTeamEntities::add);
-        return invitationToTeamEntities;
+    public InvitationToTeamEntity getInvitationToTeam(Long id) {
+        return invitationToTeamRepository.findOne(id);
+    }
+
+    public Iterable<InvitationToTeamEntity> getAllInvitationsToTeam() {
+        return invitationToTeamRepository.findAll();
+    }
+
+    public void updateInvitationToTeam(InvitationToTeamEntity invitationToTeamEntity) {
+        invitationToTeamRepository.save(invitationToTeamEntity);
+    }
+
+    public void deleteInvitationToTeam(Long id) {
+        invitationToTeamRepository.delete(id);
+    }
+
+    public void deleteInvitationToTeam(InvitationToTeamEntity invitationToTeamEntity) {
+        invitationToTeamRepository.delete(invitationToTeamEntity);
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by jereczekt on 11.07.2017.
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
 
