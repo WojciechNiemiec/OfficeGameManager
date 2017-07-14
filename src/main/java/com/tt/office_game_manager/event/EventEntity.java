@@ -1,5 +1,6 @@
 package com.tt.office_game_manager.event;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tt.office_game_manager.discipline.DisciplineType;
 import com.tt.office_game_manager.game.GameEntity;
 import com.tt.office_game_manager.user.UserEntity;
@@ -48,5 +49,6 @@ public class EventEntity implements Serializable {
 
     @OneToMany
     @JoinColumn
+    @JsonIgnore
     private Set<GameEntity> games;
 }

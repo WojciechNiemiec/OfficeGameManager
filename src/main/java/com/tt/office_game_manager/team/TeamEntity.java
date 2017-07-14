@@ -40,13 +40,16 @@ public class TeamEntity implements Serializable {
 
     @OneToMany
     @JoinColumn
+    @JsonIgnore
     private Set<InvitationToEventEntity> invitationsToEvents;
 
     @OneToMany
     @JoinColumn
+    @JsonIgnore
     private Set<ScoreEntity> scores;
 
     @OneToMany
     @JoinColumn
+    @JsonIgnore
     private Set<InvitationToTeamEntity> ownedInvitationsToTeam;
 }

@@ -1,5 +1,6 @@
 package com.tt.office_game_manager.game;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tt.office_game_manager.event.EventEntity;
 import com.tt.office_game_manager.score.ScoreEntity;
 import lombok.AllArgsConstructor;
@@ -33,5 +34,6 @@ public class GameEntity implements Serializable {
 
     @OneToMany
     @JoinColumn
+    @JsonIgnore
     private Set<ScoreEntity> scores;
 }
