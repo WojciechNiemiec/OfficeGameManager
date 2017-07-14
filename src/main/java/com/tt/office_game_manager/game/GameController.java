@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Tadeusz on 2017-07-12.
  */
 @Controller
-@RequestMapping("/game")
+@RequestMapping("/games")
 public class GameController {
     private final GameService gameService;
 
