@@ -23,8 +23,9 @@ public class UserService {
         userRepository.save(userEntity);
     }
 
-    public UserEntity getUser(Long id) {
-        return userRepository.findOne(id);
+    public UserDTO getUser(Long id) {
+        //return UserMapper.Instance.UserEntityToUserDTO(userRepository.findOne(id));
+        return userMapper.UserEntityToUserDTO(userRepository.findOne(id));
     }
 
     public Iterable<UserEntity> getAllUsers() {
