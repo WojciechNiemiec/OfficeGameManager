@@ -5,14 +5,14 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2017-07-16T17:23:24+0200",
-    comments = "version: 1.1.0.Final, compiler: javac, environment: Java 1.8.0_121 (Oracle Corporation)"
+    date = "2017-07-17T07:45:10+0200",
+    comments = "version: 1.1.0.Final, compiler: javac, environment: Java 1.8.0_131 (Oracle Corporation)"
 )
 @Component
 public class UserMapperImpl implements UserMapper {
 
     @Override
-    public UserEntity toUserEntity(UserDTO userDTO) {
+    public UserEntity userDTOToUserEntity(UserDTO userDTO) {
         if ( userDTO == null ) {
             return null;
         }
@@ -21,13 +21,12 @@ public class UserMapperImpl implements UserMapper {
 
         userEntity.setId( userDTO.getId() );
         userEntity.setLogin( userDTO.getLogin() );
-        userEntity.setPassword( userDTO.getPassword() );
 
         return userEntity;
     }
 
     @Override
-    public UserDTO UserEntityToUserDTO(UserEntity userEntity) {
+    public UserDTO userEntityToUserDTO(UserEntity userEntity) {
         if ( userEntity == null ) {
             return null;
         }
@@ -36,7 +35,6 @@ public class UserMapperImpl implements UserMapper {
 
         userDTO.setId( userEntity.getId() );
         userDTO.setLogin( userEntity.getLogin() );
-        userDTO.setPassword( userEntity.getPassword() );
 
         return userDTO;
     }

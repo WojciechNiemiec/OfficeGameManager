@@ -32,7 +32,7 @@ public class UserController {
 
     @GetMapping("/")
     @ResponseBody
-    public Iterable<UserEntity> getAllUsers() {
+    public Iterable<UserDTO> getAllUsers() {
         return userService.getAllUsers();
     }
 
